@@ -69,7 +69,9 @@ class Lines extends React.Component {
     const result: any[] = [];
     for (let i = 0; i < size; ++i) {
       const data = this.coordinate(this.multiply(100, this.randomize(nums)), i.toString());
-      result.push(...data);
+      if (data[data.length - 1].y < 800000) {
+        result.push(...data);
+      }
     }
     return result;
   }
@@ -79,17 +81,18 @@ class Lines extends React.Component {
     this.chart = new Chart({
       container: this.el as HTMLElement,
       autoFit: true,
+      height: 1000,
     });
     this.chart.data(data);
     this.chart.scale({
       y: {
-        type: 'log',
+        // type: 'log',
         // max: 500000,
         // min: 250000,
         nice: true,
       },
     });
-    this.chart.line().position('x*y').color('type').size(1);
+    this.chart.line().position('x*y').color('type', '#0000FF55').size(1);
     this.chart.render();
     console.log('渲染结束');
   }
