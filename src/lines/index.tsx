@@ -85,7 +85,7 @@ class Lines extends React.Component {
     this.chart.scale({
       y: {
         type: 'pow',
-        // max: 500000,
+        max: 10000,
         // min: 250000,
         nice: true,
       },
